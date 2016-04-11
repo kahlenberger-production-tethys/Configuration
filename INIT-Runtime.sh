@@ -36,7 +36,7 @@ read aLine; echo "${aLine}"
 	# 3.1) OFF - for i in /media/desinfect/* ; do sudo mount -o remount,ro $i && echo 'NOTICE 2 U :: "Readonly Remount Successfull done ..."'"$i"; done
 	
 	# 3.2)
-	while true; do sudo mount -t cifs -o username=ro,soft,ro,cache=strict //192.168.100.2/SECONDARY /data/SECONDARY && break
+	while true; do sudo mount -t cifs -o username=ro,soft,ro,cache=strict,nosuid,nodev,file_mode=0640,dir_mode=0750,uid=$USER,gid=$USER //192.168.100.2/SECONDARY /data/SECONDARY && break
 		echo "...Failed to mount volume. Try again. :-) ...or break w/ [CTRL]+[C]"
 	done
 	# 4th. step #
