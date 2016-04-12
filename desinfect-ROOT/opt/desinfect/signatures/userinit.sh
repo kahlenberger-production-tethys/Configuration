@@ -13,9 +13,9 @@
 # #####################################################################
 #
 # Matthias Kahlenberger, Berlin 2016
-URL=https://github.com/kahlenberger-production-tethys/Configuration/archive/PRODUCTION.INTEGRATION.tar.gz
+URL=https://github.com/kahlenberger-production-tethys/Configuration/archive/PRODUCTION.RUNNING.tar.gz
 HTTPS_PROXY=http://10.0.0.1:1080/
 #
 wget "${URL}" || (export https_proxy=$HTTPS_PROXY ; wget $URL ) 
-[ "${?}" -eq 0 ] && tar -xzf PRODUCTION.INTEGRATION.tar.gz
+[ "${?}" -eq 0 ] && tar -xzf PRODUCTION.RUNNING.tar.gz
 exit 0
