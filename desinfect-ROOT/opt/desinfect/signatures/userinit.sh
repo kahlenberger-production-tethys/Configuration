@@ -15,7 +15,9 @@
 # Matthias Kahlenberger, Berlin 2016
 URL=https://github.com/kahlenberger-production-tethys/Configuration/archive/PRODUCTION.RUNNING.tar.gz
 HTTPS_PROXY=http://10.0.0.1:1080/
+https_proxy=http://10.0.0.1:1080/
+export https_proxy HTTPS_PROXY 
 #
 wget "${URL}" || (export https_proxy=$HTTPS_PROXY ; wget $URL ) 
 [ "${?}" -eq 0 ] && tar -xzf PRODUCTION.RUNNING.tar.gz
-exit 0
+# exit 0
