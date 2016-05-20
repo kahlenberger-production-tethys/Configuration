@@ -13,9 +13,13 @@
 # #####################################################################
 #
 # Matthias Kahlenberger, Berlin 2016
-URL=https://github.com/kahlenberger-production-tethys/Configuration/archive/PRODUCTION.RUNNING.tar.gz
-HTTPS_PROXY=http://10.0.0.1:1080/
+URL=https://github.com/kahlenberger-production-tethys/Configuration/archive/HEAD.tar.gz
+if nc -v -z -w 2 10.0.0.1 1080 ; then
+	export HTTPS_PROXY=http://10.0.0.1:1080/
+else
+	unset `set | grep -i proxy | cut -d=  -f1 | xargs echo ` 
+fi
 #
 wget "${URL}" || (export https_proxy=$HTTPS_PROXY ; wget $URL ) 
-[ "${?}" -eq 0 ] && tar -xzf PRODUCTION.RUNNING.tar.gz
+[ "${?}" -eq 0 ] && tar -xzf HEAD.tar.gz
 exit 0
